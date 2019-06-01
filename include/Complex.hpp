@@ -17,7 +17,7 @@ namespace cplx {
 
         Complex(); //default constructor
         Complex(double r, double i); //persion constructor
-        Complex(Complex & cplxnum); //copy constructor
+        Complex(Complex & num); //copy constructor
 
         //method
 
@@ -29,20 +29,20 @@ namespace cplx {
 
         //binary operator override
 
-        Complex & operator =(const Complex & cplxnum);
+        Complex & operator =(const Complex & num);
 
-        Complex & operator +=(const Complex & cplxnum);
-        Complex & operator -=(const Complex & cplxnum);
-        Complex & operator *=(const Complex & cplxnum);
-        Complex & operator /=(const Complex & cplxnum);
+        Complex & operator +=(const Complex & num);
+        Complex & operator -=(const Complex & num);
+        Complex & operator *=(const Complex & num);
+        Complex & operator /=(const Complex & num);
 
-        Complex operator +(const Complex & cplxnum);
-        Complex operator -(const Complex & cplxnum);
-        Complex operator *(const Complex & cplxnum);
-        Complex operator /(const Complex & cplxnum);
+        Complex operator +(const Complex & num);
+        Complex operator -(const Complex & num);
+        Complex operator *(const Complex & num);
+        Complex operator /(const Complex & num);
 
-        bool operator ==(const Complex & cplxnum) const;
-        bool operator !=(const Complex & cplxnum) const;
+        bool operator ==(const Complex & num) const;
+        bool operator !=(const Complex & num) const;
 
         //unary operator override
 
@@ -54,7 +54,7 @@ namespace cplx {
 
         //friend operator override
 
-        friend std::ostream & operator <<(std::ostream & os, const Complex & cplxnum);
+        friend std::ostream & operator <<(std::ostream & os, const Complex & num);
     };
 
     //define
@@ -63,7 +63,7 @@ namespace cplx {
 
     Complex::Complex(double r, double i): re{r}, im{i} {} //persion constructor
 
-    Complex::Complex(Complex & cplxnum): re{cplxnum.re}, im{cplxnum.im} {} //copy constructor
+    Complex::Complex(Complex & num): re{num.re}, im{num.im} {} //copy constructor
 
     double Complex::real() const {
         return re;
@@ -81,73 +81,73 @@ namespace cplx {
         im = d;
     }
 
-    Complex & Complex::operator=(const Complex & cplxnum) {
-        if (this == &cplxnum) {
+    Complex & Complex::operator=(const Complex & num) {
+        if (this == &num) {
             throw "Cannot self assign!";
         } else {
-            this->re = cplxnum.re;
-            this->im = cplxnum.im;
+            this->re = num.re;
+            this->im = num.im;
         }
 
         return * this;
     }
 
-    Complex & Complex::operator+=(const Complex & cplxnum) {
-        this->re += cplxnum.re;
-        this->im += cplxnum.im;
+    Complex & Complex::operator+=(const Complex & num) {
+        this->re += num.re;
+        this->im += num.im;
 
         return * this;
     }
 
-    Complex & Complex::operator-=(const Complex & cplxnum) {
-        this->re -= cplxnum.re;
-        this->im -= cplxnum.im;
+    Complex & Complex::operator-=(const Complex & num) {
+        this->re -= num.re;
+        this->im -= num.im;
 
         return * this;
     }
 
-    Complex & Complex::operator*=(const Complex & cplxnum) {
-        this->re = this->re * cplxnum.re - this->im * cplxnum.im;
-        this->im = this->re * cplxnum.im + this->im * cplxnum.re;
+    Complex & Complex::operator*=(const Complex & num) {
+        this->re = this->re * num.re - this->im * num.im;
+        this->im = this->re * num.im + this->im * num.re;
 
         return * this;
     }
 
-    Complex & Complex::operator/=(const Complex & cplxnum) {
-        this->re = (this->re * cplxnum.re + this->im * cplxnum.im) / (this->re * this->re + this->im * this->im);
-        this->im = (this->im * cplxnum.re + this->re * cplxnum.im) / (this->re * this->re + this->im * this->im);
+    Complex & Complex::operator/=(const Complex & num) {
+        this->re = (this->re * num.re + this->im * num.im) / (this->re * this->re + this->im * this->im);
+        this->im = (this->im * num.re + this->re * num.im) / (this->re * this->re + this->im * this->im);
 
         return * this;
     }
 
-    Complex Complex::operator+(const Complex & cplxnum) {
+    Complex Complex::operator+(const Complex & num) {
         Complex temp{* this};
 
-        temp += cplxnum;
+        temp += num;
 
         return temp;
     }
 
-    Complex Complex::operator-(const Complex & cplxnum) {
+    Complex Complex::operator-(const Complex & num) {
         Complex temp{* this};
 
-        temp -= cplxnum;
+        temp -= num;
 
         return temp;
     }
 
-    Complex Complex::operator*(const Complex & cplxnum) {
+    Complex Complex::operator*(const Complex & num) {
         Complex temp{* this};
 
-        temp *= cplxnum;
+        temp *= num;
 
         return temp;
     }
 
-    Complex Complex::operator/(const Complex & cplxnum) {
+    Complex Complex::operator/(const Complex & num) {
         Complex temp{* this};
 
-        temp /= cplxnum;
+        temp /= num;
 
         return temp;
     }
@@ -177,16 +177,16 @@ namespace cplx {
         return temp;
     }
 
-    bool Complex::operator==(const Complex & cplxnum) const {
-        return this->re == cplxnum.re && this->im == cplxnum.im;
+    bool Complex::operator==(const Complex & num) const {
+        return this->re == num.re && this->im == num.im;
     }
 
-    bool Complex::operator!=(const Complex & cplxnum) const {
-        return !(*this == cplxnum);
+    bool Complex::operator!=(const Complex & num) const {
+        return !(*this == num);
     }
 
-    std::ostream & operator<<(std::ostream & os, const Complex & cplxnum) {
-        os << cplxnum.re << "i + " << cplxnum.im << "j";
+    std::ostream & operator<<(std::ostream & os, const Complex & num) {
+        os << num.re << "i + " << num.im << "j";
 
         return os;
     }

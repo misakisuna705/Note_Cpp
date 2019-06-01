@@ -34,12 +34,13 @@ namespace Misaki {
 
         //binary operator override
 
-        Array<ctype> & operator =(const Array<ctype> & Arr); //assignment
-        Array<ctype> operator +(const Array<ctype> & Arr) const; //addition
+        Array<ctype> & operator =(const Array<ctype> & Arr); //assign
+
+        Array<ctype> operator +(const Array<ctype> & Arr) const; //add
 
         //unary operator override
 
-        Array<ctype> & operator -(); //negation
+        Array<ctype> & operator -(); //negative
         Array<ctype> & operator ++(); //prefix increment
         Array<ctype> operator ++(const int dummy); //postfix increment
         ctype & operator [](const int & index) const; //index
@@ -99,7 +100,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assignment
+    template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assign
         if (data == nullptr) {
             set_size(Arr.size);
             for (int i = 0; i < size; ++i) {
@@ -118,7 +119,7 @@ namespace Misaki {
         return * this;
     }
 
-    template <class ctype> Array<ctype> Array<ctype>::operator+(const Array<ctype> & Arr) const { //addition
+    template <class ctype> Array<ctype> Array<ctype>::operator+(const Array<ctype> & Arr) const { //add
         if (size != Arr.size) {
             throw "Size is not the same!";
         } else {
@@ -132,7 +133,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator-() { //negation
+    template <class ctype> Array<ctype> & Array<ctype>::operator-() { //negative
         for (int i = 0; i < size; ++i) {
             data[i] = -data[i];
         }

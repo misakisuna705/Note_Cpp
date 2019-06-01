@@ -21,40 +21,40 @@ namespace cplx {
 
         //method
 
-        double real() const;
-        double imag() const;
+        double get_real() const; //get_real
+        double get_imag() const; //get_imag
 
-        void real(const double d);
-        void imag(const double d);
+        void set_real(const double d); //set_real
+        void set_imag(const double d); //set_imag
 
         //binary operator override
 
-        Complex & operator =(const Complex & num);
+        Complex & operator =(const Complex & num); //assign
 
-        Complex & operator +=(const Complex & num);
-        Complex & operator -=(const Complex & num);
-        Complex & operator *=(const Complex & num);
-        Complex & operator /=(const Complex & num);
+        Complex & operator +=(const Complex & num); //add assign
+        Complex & operator -=(const Complex & num); //minus assign
+        Complex & operator *=(const Complex & num); //multiple assign
+        Complex & operator /=(const Complex & num); //divide assign
 
-        Complex operator +(const Complex & num);
-        Complex operator -(const Complex & num);
-        Complex operator *(const Complex & num);
-        Complex operator /(const Complex & num);
+        Complex operator +(const Complex & num); //add
+        Complex operator -(const Complex & num); //minus
+        Complex operator *(const Complex & num); //multiple
+        Complex operator /(const Complex & num); //divide
 
         bool operator ==(const Complex & num) const;
         bool operator !=(const Complex & num) const;
 
         //unary operator override
 
-        Complex & operator +();
-        Complex & operator -();
+        Complex & operator +(); //positive
+        Complex & operator -(); //negative
 
-        Complex & operator ++();
-        Complex operator ++(const int dummy);
+        Complex & operator ++(); //prefix increment
+        Complex operator ++(const int dummy); //postfix increment
 
         //friend operator override
 
-        friend std::ostream & operator <<(std::ostream & os, const Complex & num);
+        friend std::ostream & operator <<(std::ostream & os, const Complex & num); //output
     };
 
     //define
@@ -65,19 +65,19 @@ namespace cplx {
 
     Complex::Complex(Complex & num): re{num.re}, im{num.im} {} //copy constructor
 
-    double Complex::real() const {
+    double Complex::get_real() const {
         return re;
     }
 
-    double Complex::imag() const {
+    double Complex::get_imag() const {
         return im;
     }
 
-    void Complex::real(const double d) {
+    void Complex::set_real(const double d) {
         re = d;
     }
 
-    void Complex::imag(const double d) {
+    void Complex::set_imag(const double d) {
         im = d;
     }
 

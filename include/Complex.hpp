@@ -9,10 +9,10 @@ namespace cplx {
         double re, im;
 
       public:
-        complex(double r, double i): re{r}, im{i} {};
-        explicit complex(double r): re{r}, im{0} {};
-        complex(): re{0}, im{0} {};
-        complex(complex & object): re{object.re}, im{object.im} {};
+        complex(double r, double i): re{r}, im{i} {}
+        explicit complex(double r): re{r}, im{0} {}
+        complex(): re{0}, im{0} {}
+        complex(complex & object): re{object.re}, im{object.im} {}
 
         double real(void) const;
         double imag(void) const;

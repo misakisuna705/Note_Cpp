@@ -4,43 +4,63 @@
 #include <stdexcept>
 
 namespace Misaki {
+
+    //declare
+
     template <class ctype> class Array {
       private:
         int size;
         ctype * data;
 
       public:
-        Array();
-        explicit Array(const int & n);
+
+        //constructor
+
+        Array(); //default constructor
+        explicit Array(const int & n); //constructor
+        Array(const Misaki::Array<ctype> & Arr); //copy constructor
+
+        //destructor
+
         ~Array();
 
-        int get_size() const;
-        void set_size(const int & n);
+        //method
 
-        ctype get_at(const int & index) const;
-        void set_at(const int & index, const ctype & value);
+        int get_size() const; //get_size
+        void set_size(const int & n); //set_size
+        ctype get_at(const int & index) const; //get_at
+        void set_at(const int & index, const ctype & value); //set_at
+
+        //operator
+
+        Misaki::Array<ctype> & operator =(const Misaki::Array<ctype> & Arr); //assignment override
     };
 
-    template <class ctype> Array<ctype>::Array() {
-        data = nullptr;
-        size = 0;
-    }
+    //define
 
-    template <class ctype> Array<ctype>::Array(const int & n) {
-        data = nullptr;
+    template <class ctype> Array<ctype>::Array(): data{nullptr}, size{0} {} //default constructor
+
+    template <class ctype> Array<ctype>::Array(const int & n): data{nullptr} { //constructor
         set_size(n);
     }
 
-    template <class ctype> Array<ctype>::~Array() {
+    template <class ctype> Array<ctype>::Array(const Misaki::Array<ctype> & Arr) { //copy constructor
+        set_size(Arr.size);
+        for (int i = 0; i < size; ++i) {
+            data[i] = Arr.data[i];
+        }
+    }
+
+    template <class ctype> Array<ctype>::~Array() { //destructor
         delete [] data;
         data = nullptr;
     }
 
-    template <class ctype> int Array<ctype>::get_size() const {
+    template <class ctype> int Array<ctype>::get_size() const { //get_size
         return size;
     }
 
-    template <class ctype> void Array<ctype>::set_size(const int & n) {
+    template <class ctype> void Array<ctype>::set_size(const int & n) { //set_size
         if (data != nullptr) {
             throw "Array has been initialized!";
         } else {
@@ -49,7 +69,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> ctype Array<ctype>::get_at(const int & index) const {
+    template <class ctype> ctype Array<ctype>::get_at(const int & index) const { //get_at
         if (0 <= index && index < size ) {
             return data[index];
         } else {
@@ -57,7 +77,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> void Array<ctype>::set_at(const int & index, const ctype & value) {
+    template <class ctype> void Array<ctype>::set_at(const int & index, const ctype & value) { //set_at
         if (0 <= index && index < size ) {
             data[index] = value;
         } else {

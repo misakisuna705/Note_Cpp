@@ -18,7 +18,7 @@ namespace Misaki {
         //constructor
 
         Array(); //default constructor
-        explicit Array(const int & n); //constructor
+        explicit Array(const int & size); //persion constructor
         Array(const Array<ctype> & Arr); //copy constructor
 
         //destructor
@@ -54,8 +54,8 @@ namespace Misaki {
 
     template <class ctype> Array<ctype>::Array(): data{nullptr}, size{0} {} //default constructor
 
-    template <class ctype> Array<ctype>::Array(const int & n): data{nullptr} { //constructor
-        set_size(n);
+    template <class ctype> Array<ctype>::Array(const int & size): data{nullptr} { //constructor
+        set_size(size);
     }
 
     template <class ctype> Array<ctype>::Array(const Array<ctype> & Arr) { //copy constructor
@@ -108,7 +108,7 @@ namespace Misaki {
         } else if (size != Arr.size) {
             throw "Size is not the same!";
         } else if (this == &Arr) {
-            throw "Cannot self assign";
+            throw "Cannot self assign!";
         } else {
             for (int i = 0; i < size; ++i) {
                 data[i] = Arr.data[i];

@@ -1,6 +1,7 @@
 #ifndef _ARRAY_H_
 #define _ARRAY_H_
 
+#include <iostream>
 #include <stdexcept>
 
 namespace Misaki {
@@ -42,6 +43,11 @@ namespace Misaki {
         Array<ctype> & operator ++(); //prefix increment
         Array<ctype> operator ++(const int dummy); //postfix increment
         ctype & operator [](const int & index) const; //index
+
+        //friend operator override
+
+        friend std::istream & operator >>(std::istream & is, const Array<ctype> & Arr); //input
+        friend std::ostream & operator <<(std::ostream & os, const Array<ctype> & Arr); //output
     };
 
     //define
@@ -158,6 +164,24 @@ namespace Misaki {
         } else {
             return data[index];
         }
+    }
+
+    template <class ctype> std::istream & operator >>(std::istream & is, const Array<ctype> & Arr) { //input
+        for (int i = 0; i < Arr.size; i++) {
+            is >> Arr.data[i];
+        }
+
+        return is;
+    }
+
+
+
+    template <class ctype> std::ostream & operator <<(std::ostream & os, const Array<ctype> & Arr) { //output
+        for (int i = 0; i < Arr.size; i++) {
+            os << " " << Arr.data[i];
+        }
+
+        return os;
     }
 }
 

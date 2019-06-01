@@ -31,9 +31,12 @@ namespace Misaki {
         ctype get_at(const int & index) const; //get_at
         void set_at(const int & index, const ctype & value); //set_at
 
-        //operator
+        //binary operator
 
         Array<ctype> & operator =(const Array<ctype> & Arr); //assignment override
+        Array<ctype> & operator +(const Array<ctype> & Arr); //addition override
+
+        //unary operator
     };
 
     //define
@@ -88,7 +91,7 @@ namespace Misaki {
     template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assignment override
         if (data == nullptr) {
             set_size(Arr.size);
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; ++i) {
                 data[i] = Arr.data[i];
             }
         } else if (size != Arr.size) {
@@ -96,8 +99,22 @@ namespace Misaki {
         } else if (this == &Arr) {
             throw "Cannot self assign";
         } else {
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; ++i) {
                 data[i] = Arr.data[i];
+            }
+        }
+
+        return * this;
+    }
+
+    template <class ctype> Array<ctype> & Array<ctype>::operator+(const Array<ctype> & Arr) { //addition override
+        if (size != Arr.size) {
+            throw "Size is not the same!";
+        } else {
+            Array<ctype> tmp = *this;
+
+            for (int i = 0; i < size; ++i) {
+                tmp.data[i] += Arr.data[i];
             }
         }
 

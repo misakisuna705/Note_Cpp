@@ -3,11 +3,11 @@
 using std::ostream;
 
 namespace cplx {
-    double complex::real(void) const {
+    double complex::real() const {
         return re;
     }
 
-    double complex::imag(void) const {
+    double complex::imag() const {
         return im;
     }
 
@@ -108,18 +108,18 @@ namespace cplx {
         return temp;
     }
 
-    complex & complex::operator+(void) {
+    complex & complex::operator+() {
         return * this;
     }
 
-    complex & complex::operator-(void) {
+    complex & complex::operator-() {
         this->re *= -1;
         this->im *= -1;
 
         return * this;
     }
 
-    complex & complex::operator++(void) {
+    complex & complex::operator++() {
         this->re++;
 
         return * this;

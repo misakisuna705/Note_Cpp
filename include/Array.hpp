@@ -34,9 +34,11 @@ namespace Misaki {
         //binary operator
 
         Array<ctype> & operator =(const Array<ctype> & Arr); //assignment override
-        Array<ctype> & operator +(const Array<ctype> & Arr); //addition override
+        Array<ctype> operator +(const Array<ctype> & Arr) const; //addition override
 
         //unary operator
+
+        Array<ctype> & operator -(); //negation override
     };
 
     //define
@@ -107,15 +109,23 @@ namespace Misaki {
         return * this;
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator+(const Array<ctype> & Arr) { //addition override
+    template <class ctype> Array<ctype> Array<ctype>::operator+(const Array<ctype> & Arr) const { //addition override
         if (size != Arr.size) {
             throw "Size is not the same!";
         } else {
-            Array<ctype> tmp = *this;
+            Array<ctype> tmp{* this};
 
             for (int i = 0; i < size; ++i) {
                 tmp.data[i] += Arr.data[i];
             }
+
+            return tmp;
+        }
+    }
+
+    template <class ctype> Array<ctype> & Array<ctype>::operator-() { //negation override
+        for (int i = 0; i < size; ++i) {
+            data[i] = -data[i];
         }
 
         return * this;

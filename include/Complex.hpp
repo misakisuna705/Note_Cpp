@@ -14,8 +14,8 @@ namespace cplx {
         complex(): re{0}, im{0} {}
         complex(complex & object): re{object.re}, im{object.im} {}
 
-        double real(void) const;
-        double imag(void) const;
+        double real() const;
+        double imag() const;
 
         void real(const double d);
         void imag(const double d);
@@ -32,10 +32,10 @@ namespace cplx {
         complex operator *(const complex & object);
         complex operator /(const complex & object);
 
-        complex & operator +(void);
-        complex & operator -(void);
+        complex & operator +();
+        complex & operator -();
 
-        complex & operator ++(void);
+        complex & operator ++();
         complex operator ++(const int n);
 
         bool operator ==(const complex & object) const;

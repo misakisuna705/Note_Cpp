@@ -18,7 +18,7 @@ namespace Misaki {
 
         Array(); //default constructor
         explicit Array(const int & n); //constructor
-        Array(const Misaki::Array<ctype> & Arr); //copy constructor
+        Array(const Array<ctype> & Arr); //copy constructor
 
         //destructor
 
@@ -33,7 +33,7 @@ namespace Misaki {
 
         //operator
 
-        Misaki::Array<ctype> & operator =(const Misaki::Array<ctype> & Arr); //assignment override
+        Array<ctype> & operator =(const Array<ctype> & Arr); //assignment override
     };
 
     //define
@@ -44,7 +44,7 @@ namespace Misaki {
         set_size(n);
     }
 
-    template <class ctype> Array<ctype>::Array(const Misaki::Array<ctype> & Arr) { //copy constructor
+    template <class ctype> Array<ctype>::Array(const Array<ctype> & Arr) { //copy constructor
         set_size(Arr.size);
         for (int i = 0; i < size; ++i) {
             data[i] = Arr.data[i];

@@ -31,15 +31,16 @@ namespace Misaki {
         ctype get_at(const int & index) const; //get_at
         void set_at(const int & index, const ctype & value); //set_at
 
-        //binary operator
+        //binary operator override
 
-        Array<ctype> & operator =(const Array<ctype> & Arr); //assignment override
-        Array<ctype> operator +(const Array<ctype> & Arr) const; //addition override
+        Array<ctype> & operator =(const Array<ctype> & Arr); //assignment
+        Array<ctype> operator +(const Array<ctype> & Arr) const; //addition
 
-        //unary operator
+        //unary operator override
 
-        Array<ctype> & operator -(); //negation override
-        ctype & operator [](const int & index) const;
+        Array<ctype> & operator -(); //negation
+        Array<ctype> & operator ++(); //increment
+        ctype & operator [](const int & index) const; //index
     };
 
     //define
@@ -91,7 +92,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assignment override
+    template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assignment
         if (data == nullptr) {
             set_size(Arr.size);
             for (int i = 0; i < size; ++i) {
@@ -110,7 +111,7 @@ namespace Misaki {
         return * this;
     }
 
-    template <class ctype> Array<ctype> Array<ctype>::operator+(const Array<ctype> & Arr) const { //addition override
+    template <class ctype> Array<ctype> Array<ctype>::operator+(const Array<ctype> & Arr) const { //addition
         if (size != Arr.size) {
             throw "Size is not the same!";
         } else {
@@ -124,7 +125,7 @@ namespace Misaki {
         }
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator-() { //negation override
+    template <class ctype> Array<ctype> & Array<ctype>::operator-() { //negation
         for (int i = 0; i < size; ++i) {
             data[i] = -data[i];
         }
@@ -132,7 +133,15 @@ namespace Misaki {
         return * this;
     }
 
-    template <class ctype> ctype & Array<ctype>::operator[](const int & index) const {
+    template <class ctype> Array<ctype> & Array<ctype>::operator ++() { //increment
+        for (int i = 0; i < size; ++i) {
+            data[i]++;
+        }
+
+        return * this;
+    }
+
+    template <class ctype> ctype & Array<ctype>::operator[](const int & index) const { //index
         if (index < 0 || index >= size) {
             throw std::out_of_range("Index is out of range!");
         } else {

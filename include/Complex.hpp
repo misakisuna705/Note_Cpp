@@ -11,7 +11,7 @@ namespace cplx {
       public:
         Complex(): re{0}, im{0} {}
         Complex(double r, double i): re{r}, im{i} {}
-        Complex(Complex & object): re{object.re}, im{object.im} {}
+        Complex(Complex & cplxnum): re{cplxnum.re}, im{cplxnum.im} {}
 
         double real() const;
         double imag() const;
@@ -19,17 +19,17 @@ namespace cplx {
         void real(const double d);
         void imag(const double d);
 
-        Complex & operator =(const Complex & object);
+        Complex & operator =(const Complex & cplxnum);
 
-        Complex & operator +=(const Complex & object);
-        Complex & operator -=(const Complex & object);
-        Complex & operator *=(const Complex & object);
-        Complex & operator /=(const Complex & object);
+        Complex & operator +=(const Complex & cplxnum);
+        Complex & operator -=(const Complex & cplxnum);
+        Complex & operator *=(const Complex & cplxnum);
+        Complex & operator /=(const Complex & cplxnum);
 
-        Complex operator +(const Complex & object);
-        Complex operator -(const Complex & object);
-        Complex operator *(const Complex & object);
-        Complex operator /(const Complex & object);
+        Complex operator +(const Complex & cplxnum);
+        Complex operator -(const Complex & cplxnum);
+        Complex operator *(const Complex & cplxnum);
+        Complex operator /(const Complex & cplxnum);
 
         Complex & operator +();
         Complex & operator -();
@@ -37,10 +37,10 @@ namespace cplx {
         Complex & operator ++();
         Complex operator ++(const int dummy);
 
-        bool operator ==(const Complex & object) const;
-        bool operator !=(const Complex & object) const;
+        bool operator ==(const Complex & cplxnum) const;
+        bool operator !=(const Complex & cplxnum) const;
 
-        friend std::ostream & operator <<(std::ostream & os, const Complex & object);
+        friend std::ostream & operator <<(std::ostream & os, const Complex & cplxnum);
     };
 }
 

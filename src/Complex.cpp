@@ -19,19 +19,19 @@ namespace cplx {
         im = d;
     }
 
-    Complex & Complex::operator=(const Complex & object) {
-        if (this != &object) {
-            this->re = object.re;
-            this->im = object.im;
+    Complex & Complex::operator=(const Complex & cplxnum) {
+        if (this != &cplxnum) {
+            this->re = cplxnum.re;
+            this->im = cplxnum.im;
         }
 
         return * this;
     }
 
-    Complex & Complex::operator+=(const Complex & object) {
-        if (this != &object) {
-            this->re += object.re;
-            this->im += object.im;
+    Complex & Complex::operator+=(const Complex & cplxnum) {
+        if (this != &cplxnum) {
+            this->re += cplxnum.re;
+            this->im += cplxnum.im;
         } else {
             this->re *= 2;
             this->im *= 2;
@@ -40,10 +40,10 @@ namespace cplx {
         return * this;
     }
 
-    Complex & Complex::operator-=(const Complex & object) {
-        if (this != &object) {
-            this->re -= object.re;
-            this->im -= object.im;
+    Complex & Complex::operator-=(const Complex & cplxnum) {
+        if (this != &cplxnum) {
+            this->re -= cplxnum.re;
+            this->im -= cplxnum.im;
         } else {
             this->re = 0;
             this->im = 0;
@@ -52,10 +52,10 @@ namespace cplx {
         return * this;
     }
 
-    Complex & Complex::operator*=(const Complex & object) {
-        if (this != &object) {
-            this->re = this->re * object.re - this->im * object.im;
-            this->im = this->re * object.im + this->im * object.re;
+    Complex & Complex::operator*=(const Complex & cplxnum) {
+        if (this != &cplxnum) {
+            this->re = this->re * cplxnum.re - this->im * cplxnum.im;
+            this->im = this->re * cplxnum.im + this->im * cplxnum.re;
         } else {
             this->re = this->re * this->re - this->im * this->im;
             this->im = this->re * this->im + this->im * this->re;
@@ -64,10 +64,10 @@ namespace cplx {
         return * this;
     }
 
-    Complex & Complex::operator/=(const Complex & object) {
-        if (this != &object) {
-            this->re = (this->re * object.re + this->im * object.im) / (this->re * this->re + this->im * this->im);
-            this->im = (this->im * object.re + this->re * object.im) / (this->re * this->re + this->im * this->im);
+    Complex & Complex::operator/=(const Complex & cplxnum) {
+        if (this != &cplxnum) {
+            this->re = (this->re * cplxnum.re + this->im * cplxnum.im) / (this->re * this->re + this->im * this->im);
+            this->im = (this->im * cplxnum.re + this->re * cplxnum.im) / (this->re * this->re + this->im * this->im);
         } else {
             this->re = 1;
             this->im = 0;
@@ -76,34 +76,34 @@ namespace cplx {
         return * this;
     }
 
-    Complex Complex::operator+(const Complex & object) {
+    Complex Complex::operator+(const Complex & cplxnum) {
         Complex temp = *this;
 
-        temp += object;
+        temp += cplxnum;
 
         return temp;
     }
 
-    Complex Complex::operator-(const Complex & object) {
+    Complex Complex::operator-(const Complex & cplxnum) {
         Complex temp = *this;
 
-        temp -= object;
+        temp -= cplxnum;
 
         return temp;
     }
 
-    Complex Complex::operator*(const Complex & object) {
+    Complex Complex::operator*(const Complex & cplxnum) {
         Complex temp = *this;
 
-        temp *= object;
+        temp *= cplxnum;
 
         return temp;
     }
 
-    Complex Complex::operator/(const Complex & object) {
+    Complex Complex::operator/(const Complex & cplxnum) {
         Complex temp = *this;
 
-        temp /= object;
+        temp /= cplxnum;
 
         return temp;
     }
@@ -133,16 +133,16 @@ namespace cplx {
         return temp;
     }
 
-    bool Complex::operator==(const Complex & object) const {
-        return this->re == object.re && this->im == object.im;
+    bool Complex::operator==(const Complex & cplxnum) const {
+        return this->re == cplxnum.re && this->im == cplxnum.im;
     }
 
-    bool Complex::operator!=(const Complex & object) const {
-        return !(*this == object);
+    bool Complex::operator!=(const Complex & cplxnum) const {
+        return !(*this == cplxnum);
     }
 
-    ostream & operator<<(ostream & os, const Complex & object) {
-        os << object.re << "i + " << object.im << "j";
+    ostream & operator<<(ostream & os, const Complex & cplxnum) {
+        os << cplxnum.re << "i + " << cplxnum.im << "j";
 
         return os;
     }

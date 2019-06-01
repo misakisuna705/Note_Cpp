@@ -6,6 +6,7 @@ using namespace std;
 
 int main() {
     try {
+        //
     } catch (exception & error) {
         cerr << error.what() << "\n";
     } catch (char const * error) {

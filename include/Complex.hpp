@@ -4,15 +4,14 @@
 #include <iostream>
 
 namespace cplx {
-    class complex {
+    class Complex {
       private:
         double re, im;
 
       public:
-        complex(double r, double i): re{r}, im{i} {}
-        explicit complex(double r): re{r}, im{0} {}
-        complex(): re{0}, im{0} {}
-        complex(complex & object): re{object.re}, im{object.im} {}
+        Complex(): re{0}, im{0} {}
+        Complex(double r, double i): re{r}, im{i} {}
+        Complex(Complex & object): re{object.re}, im{object.im} {}
 
         double real() const;
         double imag() const;
@@ -20,28 +19,28 @@ namespace cplx {
         void real(const double d);
         void imag(const double d);
 
-        complex & operator =(const complex & object);
+        Complex & operator =(const Complex & object);
 
-        complex & operator +=(const complex & object);
-        complex & operator -=(const complex & object);
-        complex & operator *=(const complex & object);
-        complex & operator /=(const complex & object);
+        Complex & operator +=(const Complex & object);
+        Complex & operator -=(const Complex & object);
+        Complex & operator *=(const Complex & object);
+        Complex & operator /=(const Complex & object);
 
-        complex operator +(const complex & object);
-        complex operator -(const complex & object);
-        complex operator *(const complex & object);
-        complex operator /(const complex & object);
+        Complex operator +(const Complex & object);
+        Complex operator -(const Complex & object);
+        Complex operator *(const Complex & object);
+        Complex operator /(const Complex & object);
 
-        complex & operator +();
-        complex & operator -();
+        Complex & operator +();
+        Complex & operator -();
 
-        complex & operator ++();
-        complex operator ++(const int dummy);
+        Complex & operator ++();
+        Complex operator ++(const int dummy);
 
-        bool operator ==(const complex & object) const;
-        bool operator !=(const complex & object) const;
+        bool operator ==(const Complex & object) const;
+        bool operator !=(const Complex & object) const;
 
-        friend std::ostream & operator <<(std::ostream & os, const complex & object);
+        friend std::ostream & operator <<(std::ostream & os, const Complex & object);
     };
 }
 

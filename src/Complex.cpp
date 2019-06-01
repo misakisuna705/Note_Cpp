@@ -3,23 +3,23 @@
 using std::ostream;
 
 namespace cplx {
-    double complex::real() const {
+    double Complex::real() const {
         return re;
     }
 
-    double complex::imag() const {
+    double Complex::imag() const {
         return im;
     }
 
-    void complex::real(const double d) {
+    void Complex::real(const double d) {
         re = d;
     }
 
-    void complex::imag(const double d) {
+    void Complex::imag(const double d) {
         im = d;
     }
 
-    complex & complex::operator=(const complex & object) {
+    Complex & Complex::operator=(const Complex & object) {
         if (this != &object) {
             this->re = object.re;
             this->im = object.im;
@@ -28,7 +28,7 @@ namespace cplx {
         return * this;
     }
 
-    complex & complex::operator+=(const complex & object) {
+    Complex & Complex::operator+=(const Complex & object) {
         if (this != &object) {
             this->re += object.re;
             this->im += object.im;
@@ -40,7 +40,7 @@ namespace cplx {
         return * this;
     }
 
-    complex & complex::operator-=(const complex & object) {
+    Complex & Complex::operator-=(const Complex & object) {
         if (this != &object) {
             this->re -= object.re;
             this->im -= object.im;
@@ -52,7 +52,7 @@ namespace cplx {
         return * this;
     }
 
-    complex & complex::operator*=(const complex & object) {
+    Complex & Complex::operator*=(const Complex & object) {
         if (this != &object) {
             this->re = this->re * object.re - this->im * object.im;
             this->im = this->re * object.im + this->im * object.re;
@@ -64,7 +64,7 @@ namespace cplx {
         return * this;
     }
 
-    complex & complex::operator/=(const complex & object) {
+    Complex & Complex::operator/=(const Complex & object) {
         if (this != &object) {
             this->re = (this->re * object.re + this->im * object.im) / (this->re * this->re + this->im * this->im);
             this->im = (this->im * object.re + this->re * object.im) / (this->re * this->re + this->im * this->im);
@@ -76,72 +76,72 @@ namespace cplx {
         return * this;
     }
 
-    complex complex::operator+(const complex & object) {
-        complex temp = *this;
+    Complex Complex::operator+(const Complex & object) {
+        Complex temp = *this;
 
         temp += object;
 
         return temp;
     }
 
-    complex complex::operator-(const complex & object) {
-        complex temp = *this;
+    Complex Complex::operator-(const Complex & object) {
+        Complex temp = *this;
 
         temp -= object;
 
         return temp;
     }
 
-    complex complex::operator*(const complex & object) {
-        complex temp = *this;
+    Complex Complex::operator*(const Complex & object) {
+        Complex temp = *this;
 
         temp *= object;
 
         return temp;
     }
 
-    complex complex::operator/(const complex & object) {
-        complex temp = *this;
+    Complex Complex::operator/(const Complex & object) {
+        Complex temp = *this;
 
         temp /= object;
 
         return temp;
     }
 
-    complex & complex::operator+() {
+    Complex & Complex::operator+() {
         return * this;
     }
 
-    complex & complex::operator-() {
+    Complex & Complex::operator-() {
         this->re *= -1;
         this->im *= -1;
 
         return * this;
     }
 
-    complex & complex::operator++() {
+    Complex & Complex::operator++() {
         this->re++;
 
         return * this;
     }
 
-    complex complex::operator++(const int dummy) {
-        complex temp = *this;
+    Complex Complex::operator++(const int dummy) {
+        Complex temp = *this;
 
         ++(*this);
 
         return temp;
     }
 
-    bool complex::operator==(const complex & object) const {
+    bool Complex::operator==(const Complex & object) const {
         return this->re == object.re && this->im == object.im;
     }
 
-    bool complex::operator!=(const complex & object) const {
+    bool Complex::operator!=(const Complex & object) const {
         return !(*this == object);
     }
 
-    ostream & operator<<(ostream & os, const complex & object) {
+    ostream & operator<<(ostream & os, const Complex & object) {
         os << object.re << "i + " << object.im << "j";
 
         return os;

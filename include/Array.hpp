@@ -84,6 +84,25 @@ namespace Misaki {
             throw std::out_of_range("Index is out of range!");
         }
     }
+
+    template <class ctype> Array<ctype> & Array<ctype>::operator=(const Array<ctype> & Arr) { //assignment override
+        if (data == nullptr) {
+            set_size(Arr.size);
+            for (int i = 0; i < size; i++) {
+                data[i] = Arr.data[i];
+            }
+        } else if (size != Arr.size) {
+            throw "Size is not the same!";
+        } else if (this == &Arr) {
+            throw "Cannot self assign";
+        } else {
+            for (int i = 0; i < size; i++) {
+                data[i] = Arr.data[i];
+            }
+        }
+
+        return * this;
+    }
 }
 
 #endif

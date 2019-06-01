@@ -39,6 +39,7 @@ namespace Misaki {
         //unary operator
 
         Array<ctype> & operator -(); //negation override
+        ctype & operator [](const int & index) const;
     };
 
     //define
@@ -75,18 +76,18 @@ namespace Misaki {
     }
 
     template <class ctype> ctype Array<ctype>::get_at(const int & index) const { //get_at
-        if (0 <= index && index < size ) {
-            return data[index];
-        } else {
+        if (index < 0 || index >= size) {
             throw std::out_of_range("Index is out of range!");
+        } else {
+            return data[index];
         }
     }
 
     template <class ctype> void Array<ctype>::set_at(const int & index, const ctype & value) { //set_at
-        if (0 <= index && index < size ) {
-            data[index] = value;
-        } else {
+        if (index < 0 || index >= size) {
             throw std::out_of_range("Index is out of range!");
+        } else {
+            data[index] = value;
         }
     }
 
@@ -129,6 +130,14 @@ namespace Misaki {
         }
 
         return * this;
+    }
+
+    template <class ctype> ctype & Array<ctype>::operator[](const int & index) const {
+        if (index < 0 || index >= size) {
+            throw std::out_of_range("Index is out of range!");
+        } else {
+            return data[index];
+        }
     }
 }
 

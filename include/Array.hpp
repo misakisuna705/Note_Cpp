@@ -39,7 +39,8 @@ namespace Misaki {
         //unary operator override
 
         Array<ctype> & operator -(); //negation
-        Array<ctype> & operator ++(); //increment
+        Array<ctype> & operator ++(); //prefix increment
+        Array<ctype> operator ++(const int dummy); //postfix increment
         ctype & operator [](const int & index) const; //index
     };
 
@@ -133,12 +134,22 @@ namespace Misaki {
         return * this;
     }
 
-    template <class ctype> Array<ctype> & Array<ctype>::operator ++() { //increment
+    template <class ctype> Array<ctype> & Array<ctype>::operator ++() { //prefix increment
         for (int i = 0; i < size; ++i) {
             data[i]++;
         }
 
         return * this;
+    }
+
+    template <class ctype> Array<ctype> Array<ctype>::operator ++(const int dummy) { //postfix increment
+        Array<ctype> tmp{* this};
+
+        for (int i = 0; i < size; ++i) {
+            data[i]++;
+        }
+
+        return tmp;
     }
 
     template <class ctype> ctype & Array<ctype>::operator[](const int & index) const { //index

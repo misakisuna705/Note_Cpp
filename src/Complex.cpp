@@ -125,7 +125,7 @@ namespace cplx {
         return * this;
     }
 
-    complex complex::operator++(const int n) {
+    complex complex::operator++(const int dummy) {
         complex temp = *this;
 
         ++(*this);

@@ -36,7 +36,7 @@ namespace cplx {
         complex & operator -();
 
         complex & operator ++();
-        complex operator ++(const int n);
+        complex operator ++(const int dummy);
 
         bool operator ==(const complex & object) const;
         bool operator !=(const complex & object) const;
